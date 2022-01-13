@@ -1,0 +1,14 @@
+{% load custom_tags %}
+
+<div class="container bg-light my-2">
+    <br>
+    <div class="embed-responsive embed-responsive-16by9" align="center">
+        <iframe class="embed-responsive" width="75%" {% if column == '1' %} height="480" {% else %} height="260" {% endif %} src="{{ self.video.url | embedurl}}?rel=0"
+            allowfullscreen >
+        </iframe>
+    </div>
+    {% if self.caption %}   
+        <p class="offset-md-2">{{ self.caption }}</p>
+    {% endif %}
+    <br>
+</div>

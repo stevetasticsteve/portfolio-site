@@ -1,2 +1,4 @@
 Django>=3.2,<3.3
 wagtail>=2.15,<2.16
+wagtailcodeblock==1.25.0.2
+wagtailfontawesome==1.2.1dj
