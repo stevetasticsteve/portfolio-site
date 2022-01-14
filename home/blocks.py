@@ -116,6 +116,7 @@ class QuoteBlock(blocks.StructBlock):
         label = "Quote"
         help_text = "A quotation"
 
+
 class TableBlock(blocks.StructBlock):
     """
     A simple table.
@@ -128,6 +129,7 @@ class TableBlock(blocks.StructBlock):
         icon = "table"
         label = "Table"
         help_text = "Insert a table"
+
 
 class ColumnBlock(blocks.StructBlock):
     """

@@ -4,12 +4,8 @@ from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import StreamField
-from wagtail.images.blocks import ImageChooserBlock
+
 from . import blocks as myblocks
-from wagtail.core import blocks
-
-
 from projects.models import CategoryPage
 
 
@@ -41,7 +37,7 @@ class HomePage(Page):
         for c in categories:
             c.pages = c.get_children().live().specific()
         context["categories"] = categories
-        
+
         return context
 
 
@@ -58,4 +54,4 @@ class AboutPage(Page):
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
-        ]
+    ]
