@@ -41,6 +41,11 @@
                         <img src="{{ image.url }}" class="card-img-top" alt="{{ image.alt }}">
                         <div class="card-body d-flex flex-column">
                             <h3 class="card-title text-center">{{ project.title }}</h3>
+                            <div>
+                                {% for t in project.technologies.all %}
+                                <span class="badge rounded-pill {% cycle " bg-primary" "bg-secondary" "bg-success" "bg-danger" %}">{{t.name}}</span>
+                                {% endfor %}
+                            </div>
                             <p class="card-text text-center">{{ project.short_description }}</p>
                             <div class="text-end mt-auto">
                                 <a href="{{ project.url }}" class="btn btn-outline-primary stretched-link mt-auto"> {{project.title}} </a>

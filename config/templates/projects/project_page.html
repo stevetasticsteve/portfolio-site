@@ -2,10 +2,47 @@
 
 {% load wagtailimages_tags wagtailcore_tags %}
 
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/project_page.css" %}">
+{% endblock %}
+
 {% block content %}
 
-<h1>{{page.title}}</h1>
+<div class="container">
+    <h1>{{page.title}}</h1>
+    {% if page.github_url %}
+    <div id="project_header" class="d-flex align-items-center">
+        <div class="d-flex align-items-center">
+            <i class="fab fa-github large-icon"></i>
+            <a href="{{page.github_url}}"><button type="button" class="btn btn-dark mx-2">{{page.title}} repo</button></a>
+        </div>
+        <div class="mx-2 d-flex align-items-center">
+            <i class="far fa-calendar-alt large-icon mx-2"></i>
+            <span>Created: {{page.created}}</span>
+        </div>
+    </div>
+    
+    {% endif %}
+    <div class="container my-2 p-2 border" id="project-description">
+        <p>{{page.short_description}}</p>
+    </div>
 
-<p>{{page.short_description}}</p>
+    <div class="container" id="technologies">
+        <h4>Technologies used</h4>
+        {% for t in page.technologies.all %}
+        <a href={{t.link}}>
+            <button type="button" class="btn {% cycle "btn-secondary" "btn-success" "btn-danger" "btn-warning" %}">
+            {{t.name}} 
+        </button>
+        </a>
+        {% endfor %}
+    </div>
+    
+    <div class="container my-2" id="project-body">
+        <p>{{page.body}}</p>
+    </div>
+</div>
+
 
 {% endblock %}

@@ -3,7 +3,8 @@ from django import forms
 
 from wagtail.core import blocks
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, ImageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
 from modelcluster.fields import ParentalManyToManyField
