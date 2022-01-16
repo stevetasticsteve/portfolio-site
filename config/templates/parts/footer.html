@@ -1,0 +1,27 @@
+{% load wagtailcore_tags %}
+{% load nav_tags %}
+{% get_menu_pages as menu %}
+<footer>
+<div class="bg-secondary p-4 mt-3" id="footer">
+    <div class="row">
+        <div class="col-3 mx-auto text-center text-white mt-3">
+            <p class="m-0">I love building things with Python.</p>
+            <p class="m-0">In fact this website is built with it.</p>
+        </div>
+        <div class="col-3 text-white text-center mx-auto">
+            <h4>Around the web</h4>
+            <div class="d-flex align-items-center justify-content-sm-center">
+                <a href="https://github.com/stevetasticsteve"><i class="fab fa-github footer-icon mx-1"></i></a>
+            </div>
+        </div>
+        <div class="col-3 mx-auto">
+            {% for m in menu %}
+            <ul><a href="{{m.url}}">{{m.title}}</a></ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="bg-dark">
+    <p class="text-white text-center p-3 m-0">Copyright © Stephen Stanley 2022</p>
+</div>
+</footer>
