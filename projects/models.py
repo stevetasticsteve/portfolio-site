@@ -72,3 +72,15 @@ class CategoryPage(Page):
         FieldPanel("short_description"),
         FieldPanel("icon"),
     ]
+
+class HelpIndexPage(Page):
+    parent_page_types = ["home.HomePage"]
+    max_count = 1
+
+class HelpPage(Page):
+    parent_page_type = ["HelpIndexPage"]
+    body = myblocks.full_streamfield
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+    ]

@@ -42,9 +42,17 @@ class HomePage(Page):
 
 
 class AboutPage(Page):
-    maentx_count = 1
-    par_page_types = ["HomePage"]
+    max_count = 1
+    parent_page_types = ["HomePage"]
 
+    body = myblocks.full_streamfield
+
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+    ]
+
+class GeneralPage(Page):
     body = myblocks.full_streamfield
 
 

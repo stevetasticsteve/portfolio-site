@@ -1,0 +1,13 @@
+{% extends "normal_page.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block page_content %}
+    <div class="container"></div>
+    <h1>Help index</h1>
+    {% for p in page.get_children.live %}
+    <ul><a href="{{p.url}}">{{p.title}}</a></ul>
+    {% endfor %}
+</div>
+
+{% endblock %}
