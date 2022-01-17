@@ -2,10 +2,17 @@
 
 {% load wagtailimages_tags wagtailcore_tags %}
 
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/timeline.css" %}">
+{% endblock %}
+
 {% block page_content %}
 <div class="container"></div>
     <h1>{{page.title}}</h1>
     {{page.body}}
+
+    {% include "parts/timeline.html" %}
 </div>
 
 {% endblock %}

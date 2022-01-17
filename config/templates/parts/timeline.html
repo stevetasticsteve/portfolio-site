@@ -1,0 +1,19 @@
+{% if projects %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3 style="margin-left: 1.2rem;">Project timeline</h3>
+            <ul class="timeline">
+                {% for p in projects %}
+                <a href="{{p.url}}">
+                <li class="my-4 border-bottom">
+                    <i class="far fa-calendar-alt ico"></i><span class="mx-2">{{p.created}}</span>
+                    <a href="{{p.url}}"><h5>{{p.title}}</h5>
+                    <p class="mt-2">{{p.short_description}}</p>
+                </li>
+                </a></a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}

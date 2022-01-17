@@ -6,7 +6,7 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from . import blocks as myblocks
-from projects.models import CategoryPage
+from projects.models import CategoryPage, ProjectPage
 
 
 class HomePage(Page):
@@ -51,6 +51,14 @@ class AboutPage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
     ]
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        projects = ProjectPage.objects.live().order_by("created")
+        context["projects"] = projects
+
+        return context
 
 class GeneralPage(Page):
     body = myblocks.full_streamfield

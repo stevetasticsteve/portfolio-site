@@ -5,7 +5,7 @@ from wagtail.core import blocks
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from modelcluster.fields import ParentalManyToManyField
 from wagtail.snippets.models import register_snippet
 
@@ -48,6 +48,7 @@ class ProjectPage(Page):
     github_url = models.URLField(blank=True, null=True)
     example_url = models.URLField(blank=True, null=True)
     body = myblocks.full_streamfield
+    learned = RichTextField(features=["ul"], blank=False, null=True)
 
 
     content_panels = Page.content_panels + [
@@ -58,6 +59,7 @@ class ProjectPage(Page):
         FieldPanel("github_url"),
         FieldPanel("example_url"),
         StreamFieldPanel("body"),
+        StreamFieldPanel("learned"),
     ]
 
 
