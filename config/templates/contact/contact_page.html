@@ -1,0 +1,26 @@
+{% extends "normal_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load crispy_forms_tags %}
+
+{% block page_content %}
+
+<h1>Contact</h1>
+<div class="row">
+    <div class="col">
+        {% image page.contact_page_image fill-580x335 as img %}
+        <img src="{{img.url}}" class="rounded mx-auto d-block" alt="{{img.alt}}">
+        <p class="p-3 mx-auto">{{page.intro|richtext}}</p>
+    </div>
+    <div class="col">
+        
+        <form action="{% pageurl page %}" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
+

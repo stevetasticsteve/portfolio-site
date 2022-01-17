@@ -1,0 +1,15 @@
+{% extends "normal_page.html" %}
+{% load wagtailcore_tags %}
+
+{% block page_content %}
+<h1>Contact</h1>
+
+<div class="container mt-3">
+    {{ self.thank_you_text|richtext }}
+    <a href="/" class="btn btn-secondary btn-lg mb-3">
+        Continue &rarr;
+    </a>
+</div>
+
+
+{% endblock %}
