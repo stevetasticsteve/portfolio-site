@@ -46,11 +46,7 @@ class AboutPage(Page):
     par_page_types = ["HomePage"]
 
     body = myblocks.full_streamfield
-    # body = StreamField([
-    #     ('heading', blocks.CharBlock(form_classname="full title")),
-    #     ('paragraph', blocks.RichTextBlock()),
-    #     ('image', ImageChooserBlock()),
-    # ], null=True, blank=True)
+
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),

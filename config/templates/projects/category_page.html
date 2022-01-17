@@ -6,4 +6,30 @@
 
 <h1>{{page.title}}</h1>
 
+<p>{{page.short_description|richtext}}</p>
+
+<h2>My {{page.title}} projects</h2>
+{% for p in page.get_children.live.specific %}
+
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            {% image p.image fill-900x600 as image %}
+            <img src="{{image.url}}" class="img-fluid rounded-start" alt="{{image.alt}}">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{p.url}}" class="stretched-link" style="text-decoration: none; color: black;">{{p.title}}</a>
+                </h5>
+                {% for t in p.technologies.all %}
+                <span class="badge rounded-pill {% cycle " bg-primary" "bg-secondary" "bg-success" "bg-danger" %}">{{t.name}}</span>
+                {% endfor %}
+                <p class="card-text p-2">{{p.short_description}}</p>
+                <p class="card-text p-2"><small class="text-muted">Created: {{p.created}}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

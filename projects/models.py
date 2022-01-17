@@ -5,10 +5,11 @@ from wagtail.core import blocks
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import StreamField
-from wagtail.images.blocks import ImageChooserBlock
+from wagtail.core.fields import RichTextField
 from modelcluster.fields import ParentalManyToManyField
 from wagtail.snippets.models import register_snippet
+
+from home import blocks as myblocks
 
 
 @register_snippet
@@ -43,18 +44,11 @@ class ProjectPage(Page):
         null=True,
         help_text="Short description to go in card.",
     )
-    created = models.DateField(blank=True, null=True, help_text="date created")
+    created = models.DateField(blank=False, null=True, help_text="date created")
     github_url = models.URLField(blank=True, null=True)
     example_url = models.URLField(blank=True, null=True)
-    body = StreamField(
-        [
-            ("heading", blocks.CharBlock(form_classname="full title")),
-            ("paragraph", blocks.RichTextBlock()),
-            ("image", ImageChooserBlock()),
-        ],
-        null=True,
-        blank=True,
-    )
+    body = myblocks.full_streamfield
+
 
     content_panels = Page.content_panels + [
         FieldPanel("technologies", widget=forms.CheckboxSelectMultiple),
@@ -69,7 +63,7 @@ class ProjectPage(Page):
 
 class CategoryPage(Page):
     parent_page_types = ["home.HomePage"]
-    short_description = models.CharField(max_length=250, blank=False, null=True)
+    short_description = RichTextField(blank=False, null=True)
     icon = models.CharField(
         max_length=50, blank=False, null=True, help_text="Font awesome icon to use."
     )

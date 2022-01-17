@@ -9,26 +9,31 @@
 
 {% block page_content %}
 
-<div class="container">
+<div class="container mt-2">
     <h1>{{page.title}}</h1>
-    {% if page.github_url %}
-    <div id="project_header" class="d-flex align-items-center">
+    <div id="project_header" class="d-flex align-items-center mt-4">
+        {% if page.example_url %}
+        <div class="d-flex align-items-center">
+            <i class="fas fa-globe large-icon"></i> <a href="{{page.example_url}}"><button type="button"
+                    class="btn btn-primary mx-2">Try it out</button></a>
+        </div>
+        {% endif %}
+        {% if page.github_url %}
         <div class="d-flex align-items-center">
             <i class="fab fa-github large-icon"></i>
-            <a href="{{page.github_url}}"><button type="button" class="btn btn-dark mx-2">See the source code</button></a>
+            <a href="{{page.github_url}}"><button type="button" class="btn btn-primary mx-2">See the source code</button></a>
         </div>
+        {% endif %}
+       
         <div class="mx-2 d-flex align-items-center">
             <i class="far fa-calendar-alt large-icon mx-2"></i>
             <span>Created: {{page.created}}</span>
         </div>
     </div>
-    
-    {% endif %}
-    <div class="container my-2 p-2 border" id="project-description">
-        <p>{{page.short_description}}</p>
-    </div>
 
-    <div class="container" id="technologies">
+    
+
+    <div class="container mt-4 pb-3 border-bottom" id="technologies">
         <h4>Technologies used</h4>
         {% for t in page.technologies.all %}
         <a href={{t.link}}>
@@ -38,6 +43,8 @@
         </a>
         {% endfor %}
     </div>
+
+    
     
     <div class="container my-2" id="project-body">
         <p>{{page.body}}</p>
