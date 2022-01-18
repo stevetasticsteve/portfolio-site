@@ -13,8 +13,8 @@ class HomePage(Page):
     max_count = 1
     parent_page_types = ["wagtailcore.Page"]
 
-    lead_text = models.CharField(max_length=50, blank=False)
-    body = RichTextField(blank=True)
+    lead_text = models.CharField(max_length=50, blank=False, help_text="Text to appear in top banner")
+    body = RichTextField(blank=True, help_text="Centered text to appear below banner above links ")
     avatar_image = models.ForeignKey(
         "wagtailimages.Image",
         blank=False,
@@ -31,11 +31,15 @@ class HomePage(Page):
     ]
 
     def get_context(self, request):
-        # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         categories = CategoryPage.objects.live()
         for c in categories:
-            c.pages = c.get_children().live().specific().order_by("-latest_revision_created_at")[:4]
+            c.pages = (
+                c.get_children()
+                .live()
+                .specific()
+                .order_by("-latest_revision_created_at")[:4]
+            )
         context["categories"] = categories
 
         return context
@@ -44,25 +48,24 @@ class HomePage(Page):
 class AboutPage(Page):
     max_count = 1
     parent_page_types = ["HomePage"]
+    subpage_types = []
 
     body = myblocks.full_streamfield
-
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
     ]
 
     def get_context(self, request):
-        # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         projects = ProjectPage.objects.live().order_by("created")
         context["projects"] = projects
 
         return context
 
+
 class GeneralPage(Page):
     body = myblocks.full_streamfield
-
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),

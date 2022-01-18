@@ -29,6 +29,7 @@ class Technology(models.Model):
 
 class ProjectPage(Page):
     parent_page_types = ["CategoryPage"]
+    subpage_types = []
     technologies = ParentalManyToManyField("Technology", blank=False, null=True)
     image = models.ForeignKey(
         "wagtailimages.Image",
@@ -50,7 +51,6 @@ class ProjectPage(Page):
     body = myblocks.full_streamfield
     learned = RichTextField(features=["ul"], blank=False, null=True)
 
-
     content_panels = Page.content_panels + [
         FieldPanel("technologies", widget=forms.CheckboxSelectMultiple),
         ImageChooserPanel("image"),
@@ -65,6 +65,7 @@ class ProjectPage(Page):
 
 class CategoryPage(Page):
     parent_page_types = ["home.HomePage"]
+    subpage_types = ["ProjectPage"]
     short_description = RichTextField(blank=False, null=True)
     icon = models.CharField(
         max_length=50, blank=False, null=True, help_text="Font awesome icon to use."
@@ -75,12 +76,16 @@ class CategoryPage(Page):
         FieldPanel("icon"),
     ]
 
+
 class HelpIndexPage(Page):
     parent_page_types = ["home.HomePage"]
+    subpage_types = ["HelpPage"]
     max_count = 1
+
 
 class HelpPage(Page):
     parent_page_type = ["HelpIndexPage"]
+    subpage_types = []
     body = myblocks.full_streamfield
 
     content_panels = Page.content_panels + [

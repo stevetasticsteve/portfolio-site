@@ -4,11 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 from modelcluster.models import ParentalKey
 
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField
-
-from home.blocks import full_streamfield
 
 FORM_FIELD_CHOICES = (
     ("singleline", _("Single line text")),
@@ -68,7 +66,6 @@ class ContactPage(AbstractEmailForm):
         help_text="Image will fill the left column and be cropped to 580px by 355px",
         related_name="+",
     )
-    body = full_streamfield
 
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel("intro"),
@@ -79,8 +76,7 @@ class ContactPage(AbstractEmailForm):
             help_text="Build a form here, will fill the right column.",
         ),
         FieldPanel("thank_you_text"),
-        # FieldPanel("from_address",
+        FieldPanel("from_address"),
         FieldPanel("to_address", help_text="Email address message should go to."),
         FieldPanel("subject"),
-        StreamFieldPanel("body"),
     ]
