@@ -1,19 +1,20 @@
-{% extends "base.html" %}
+{% extends "normal_page.html" %}
 {% load static wagtailcore_tags %}
 
 {% block body_class %}template-searchresults{% endblock %}
 
 {% block title %}Search{% endblock %}
 
-{% block content %}
+{% block page_content %}
     <h1>Search</h1>
 
     <form action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <input type="submit" value="Search" class="button">
+        <input class="form-control mt-4" type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+        <input class="btn btn-primary m-4" type="submit" value="Search" class="button">
     </form>
 
     {% if search_results %}
+    <h3>Search results</h3>
         <ul>
             {% for result in search_results %}
                 <li>

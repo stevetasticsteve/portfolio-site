@@ -15,10 +15,12 @@
             </div>
         </div>
         <div class="col-3 mx-auto">
+            <ul>
             {% for m in menu %}
-            <ul><a href="{{m.url}}">{{m.title}}</a></ul>
+            <li><a href="{{m.url}}">{{m.title}}</a></li>
             {% endfor %}
-            <ul><a href="/privacy">Privacy policy</a></ul>
+            <li><a href="/privacy">Privacy policy</a></li>
+            </ul>
         </div>
     </div>
 </div>
