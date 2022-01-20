@@ -8,6 +8,7 @@
 
 <p>{{page.short_description|richtext}}</p>
 
+{% if page.get_children.live %}
 <h2>My {{page.title}} projects</h2>
 {% for p in page.get_children.live.specific %}
 
@@ -32,4 +33,5 @@
     </div>
 </div>
 {% endfor %}
+{% endif %}
 {% endblock %}

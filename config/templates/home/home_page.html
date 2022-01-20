@@ -39,6 +39,7 @@
 
 <div class="container-fluid" id="projects">
 {% for category in categories %}
+{% if category.pages %}
 <div class="container-fluid bg-light border-bottom p-2">
     <div class="container-fluid row">
         
@@ -74,6 +75,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 {% endfor %}
 </div>
 {% endblock %}

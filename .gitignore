@@ -3,3 +3,4 @@ venv/
 data/*
 assets/
 content.md
+update_website.sh
