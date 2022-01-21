@@ -12,6 +12,16 @@ SESSION_COOKIE_SECURE = True
 # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # SECURE_HSTS_SECONDS = 3600
 
+# EMAIL
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
