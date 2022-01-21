@@ -4,3 +4,4 @@ wagtailcodeblock==1.25.0.2
 wagtailfontawesome==1.2.1
 crispy-bootstrap5==0.6
 whitenoise==5.3.0
+sentry-sdk==1.5.3

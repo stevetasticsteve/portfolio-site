@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html class="no-js">
-    <head>
-        <meta charset="utf-8" />
-        <title>Internal server error</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
-    <body>
-        <h1>Internal server error</h1>
+{% extends "normal_page.html" %}
 
-        <h2>Sorry, there seems to be an error. Please try again soon.</h2>
-    </body>
-</html>
+{% block title %}Server error{% endblock %}
+
+
+{% block page_content %}
+<div class="container">
+    <h1>Ah crap</h1>
+
+    <h2>Sorry, something bad happened... I'll fix that. Don't worry I probably got an email about it.</h2>
+
+    <img src="https://i0.wp.com/pbs.twimg.com/media/DvzZZdlXQAE9Zkd.jpg" class="img-fluid" alt="meme I found">
+    
+</div>
+
+{% endblock %}
