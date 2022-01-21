@@ -1,5 +1,10 @@
 {% extends "normal_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
 {% load crispy_forms_tags %}
 
 {% block page_content %}
