@@ -10,6 +10,8 @@ SECRET_KEY = "django-insecure-axrj7@fn9w2$-q)pcw)hsth(=ds&br_1(_iy66=%)p-*t^u+rb
 ALLOWED_HOSTS = ["*"]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+NOCAPTCHA = True
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
 try:

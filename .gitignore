@@ -4,3 +4,4 @@ data/*
 assets/
 content.md
 update_website.sh
+local.py

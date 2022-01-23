@@ -30,7 +30,7 @@ class Technology(models.Model):
 class ProjectPage(Page):
     parent_page_types = ["CategoryPage"]
     subpage_types = []
-    technologies = ParentalManyToManyField("Technology", blank=False, null=True)
+    technologies = ParentalManyToManyField("Technology", blank=False)
     image = models.ForeignKey(
         "wagtailimages.Image",
         blank=False,

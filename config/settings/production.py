@@ -12,6 +12,9 @@ SESSION_COOKIE_SECURE = True
 # EMAIL
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
+NOCAPTCHA = True
 
 
 import sentry_sdk

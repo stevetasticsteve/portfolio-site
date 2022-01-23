@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
 from modelcluster.models import ParentalKey
-
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField
+
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 FORM_FIELD_CHOICES = (
     ("singleline", _("Single line text")),
@@ -35,7 +35,7 @@ class FormField(CustomAbstractFormField):
     )
 
 
-class ContactPage(AbstractEmailForm):
+class ContactPage(WagtailCaptchaEmailForm):
     template = "contact/contact_page.html"
     landing_page_template = "contact/contact_page_landing.html"
     parent_page_types = ["home.HomePage"]
