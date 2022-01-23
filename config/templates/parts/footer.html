@@ -4,23 +4,40 @@
 <footer>
 <div class="bg-secondary p-4 mt-0" id="footer">
     <div class="row">
-        <div class="col-3 mx-auto text-center text-white mt-3">
+        <div class="col-3 mx-auto text-center text-white mt-3" id="footer-tagline">
             <p class="m-0">I love building things with Python.</p>
             <p class="m-0">In fact this website is built with it.</p>
         </div>
-        <div class="col-3 text-white text-center mx-auto">
+        <div class="col-3 text-white text-center mx-auto" id="footer-web-links">
             <h4>Around the web</h4>
-            <div class="d-flex align-items-center justify-content-sm-center">
+            <div class="d-flex align-items-center justify-content-center">
                 <a href="https://github.com/stevetasticsteve"><i class="fab fa-github footer-icon mx-1"></i></a>
             </div>
         </div>
-        <div class="col-3 mx-auto">
-            <ul>
-            {% for m in menu %}
-            <li><a href="{{m.url}}">{{m.title}}</a></li>
-            {% endfor %}
-            <li><a href="/privacy">Privacy policy</a></li>
-            </ul>
+
+        <div class="col-3 mx-auto" id="footer-page-links">
+            <div class="row">         
+                <div class="col-lg-6">
+                    <ul class="m-0">
+                    {% for m in menu %}
+                    {% if not forloop.counter|divisibleby:2 %}
+                        <li><a href="{{m.url}}">{{m.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    <li><a href="/privacy">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="m-0">
+                    {% for m in menu %}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <li><a href="{{m.url}}">{{m.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
