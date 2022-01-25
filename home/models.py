@@ -34,12 +34,8 @@ class HomePage(Page):
         context = super().get_context(request)
         categories = CategoryPage.objects.live()
         for c in categories:
-            c.pages = (
-                c.get_children()
-                .live()
-                .specific()
-                .order_by("-latest_revision_created_at")[:4]
-            )
+            c.pages = c.get_children().live().specific()[:4]
+
         context["categories"] = categories
 
         return context
