@@ -5,3 +5,5 @@ assets/
 content.md
 update_website.sh
 local.py
+website_backup/
+get_website_data.sh
