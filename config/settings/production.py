@@ -19,6 +19,8 @@ NOCAPTCHA = True
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import ignore_logger
+
 
 sentry_sdk.init(
     dsn="https://9c2cc8540b8d426ab5de7989c4146d14@o538547.ingest.sentry.io/6160548",
@@ -33,3 +35,4 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+ignore_logger("django.security.DisallowedHost")
