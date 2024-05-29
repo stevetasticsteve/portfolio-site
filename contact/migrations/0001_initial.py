@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -22,8 +22,8 @@ class Migration(migrations.Migration):
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
                 ('to_address', models.CharField(blank=True, help_text='Optional - form submissions will be emailed to these addresses. Separate multiple addresses by comma.', max_length=255, verbose_name='to address')),
                 ('subject', models.CharField(blank=True, max_length=255, verbose_name='subject')),
-                ('intro', wagtail.core.fields.RichTextField(blank=True, help_text='Text that will appear directly under the page title.')),
-                ('thank_you_text', wagtail.core.fields.RichTextField(blank=True, help_text='Message to user on submission of form.')),
+                ('intro', wagtail.fields.RichTextField(blank=True, help_text='Text that will appear directly under the page title.')),
+                ('thank_you_text', wagtail.fields.RichTextField(blank=True, help_text='Message to user on submission of form.')),
                 ('from_address', models.EmailField(default='stevestanleyweb@gmail.com', help_text='Email address to use to send email from.', max_length=254)),
                 ('contact_page_image', models.ForeignKey(help_text='Image will fill the left column and be cropped to 580px by 355px', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image')),
             ],

@@ -1,11 +1,9 @@
 from django.db import models
 from django import forms
 
-from wagtail.core import blocks
-from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField, StreamField
+from wagtail.models import Page
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import RichTextField
 from modelcluster.fields import ParentalManyToManyField
 from wagtail.snippets.models import register_snippet
 
@@ -53,13 +51,13 @@ class ProjectPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel("technologies", widget=forms.CheckboxSelectMultiple),
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         FieldPanel("short_description"),
         FieldPanel("created"),
         FieldPanel("github_url"),
         FieldPanel("example_url"),
-        StreamFieldPanel("body"),
-        StreamFieldPanel("learned"),
+        FieldPanel("body"),
+        FieldPanel("learned"),
     ]
 
 
@@ -89,5 +87,5 @@ class HelpPage(Page):
     body = myblocks.full_streamfield
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]

@@ -1,12 +1,11 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from modelcluster.models import ParentalKey
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.fields import RichTextField
 
-from wagtailcaptcha.models import WagtailCaptchaEmailForm
+# from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 FORM_FIELD_CHOICES = (
     ("singleline", _("Single line text")),
@@ -35,7 +34,7 @@ class FormField(CustomAbstractFormField):
     )
 
 
-class ContactPage(WagtailCaptchaEmailForm):
+class ContactPage(AbstractEmailForm):
     template = "contact/contact_page.html"
     landing_page_template = "contact/contact_page_landing.html"
     parent_page_types = ["home.HomePage"]
@@ -44,12 +43,12 @@ class ContactPage(WagtailCaptchaEmailForm):
 
     intro = RichTextField(
         blank=True,
-        features=["bold", "link", "ol", "li"],
+        features=["bold", "link", "ol"],
         help_text="Text that will appear directly under the page title.",
     )
     thank_you_text = RichTextField(
         blank=True,
-        features=["bold", "link", "ol", "li"],
+        features=["bold", "link", "ol"],
         help_text="Message to user on submission of form.",
     )
     from_address = models.EmailField(
@@ -69,7 +68,7 @@ class ContactPage(WagtailCaptchaEmailForm):
 
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel("intro"),
-        ImageChooserPanel("contact_page_image"),
+        FieldPanel("contact_page_image"),
         InlinePanel(
             "form_fields",
             label="Form Fields",

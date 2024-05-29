@@ -1,8 +1,8 @@
-from wagtail.core import blocks
+from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.documents.blocks import DocumentChooserBlock
-from wagtail.core.fields import StreamField
+from wagtail.fields import StreamField
 from wagtail.contrib.table_block.blocks import TableBlock as WagtailTableBlock
 from wagtailcodeblock.blocks import CodeBlock
 
@@ -182,4 +182,6 @@ def single_column_blocks():
     return single_column_blocks
 
 
-full_streamfield = StreamField(single_column_blocks(), null=True, blank=True)
+full_streamfield = StreamField(
+    single_column_blocks(), null=True, blank=True, use_json_field=True
+)

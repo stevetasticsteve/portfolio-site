@@ -39,15 +39,15 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.core",
+    "wagtail",
     "wagtailcodeblock",
-    "wagtailfontawesome",
+    # "wagtailfontawesome",
     "modelcluster",
     "taggit",
     "crispy_forms",
     "crispy_bootstrap5",
-    "captcha",
-    "wagtailcaptcha",
+    # "captcha",
+    # "wagtailcaptcha",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -163,6 +163,7 @@ MEDIA_URL = "/media/"
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "config"
+WAGTAILADMIN_BASE_URL = "https://codebysteve.com"
 
 # Search
 # https://docs.wagtail.io/en/stable/topics/search/backends.html
