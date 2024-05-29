@@ -7,6 +7,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
 # HTTPS
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ["https://codebysteve.com"]
 SESSION_COOKIE_SECURE = True
 
 # EMAIL
