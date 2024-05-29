@@ -1,4 +1,4 @@
-wagtail>=5,<6
+wagtail==5.2
 wagtailcodeblock==1.29.0.2 
 wagtailfontawesome==1.2.1
 crispy-bootstrap5==2024.2
