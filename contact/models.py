@@ -5,7 +5,7 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import RichTextField
 
-# from wagtailcaptcha.models import WagtailCaptchaEmailForm
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 FORM_FIELD_CHOICES = (
     ("singleline", _("Single line text")),
@@ -34,7 +34,7 @@ class FormField(CustomAbstractFormField):
     )
 
 
-class ContactPage(AbstractEmailForm):
+class ContactPage(WagtailCaptchaEmailForm):
     template = "contact/contact_page.html"
     landing_page_template = "contact/contact_page_landing.html"
     parent_page_types = ["home.HomePage"]

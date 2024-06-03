@@ -11,6 +11,8 @@ ALLOWED_HOSTS = ["*"]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 NOCAPTCHA = True
+RECAPTCHA_PUBLIC_KEY = "1"
+RECAPTCHA_PRIVATE_KEY = "2"
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
