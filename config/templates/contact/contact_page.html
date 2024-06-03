@@ -1,8 +1,6 @@
 {% extends "normal_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-
-
 {% block title %}
     {{page.title}}
 {% endblock %}
@@ -20,21 +18,14 @@
     </div>
     <div class="col">
         
-        <form id="contact-form" action="{% pageurl page %}" method="POST">
+        <form action="{% pageurl page %}" method="POST">
             {% csrf_token %}
             {{ form|crispy }}
-            <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="6Lc8DfApAAAAAE5S-uOBGvsvNo-uRcoAYG93-yWX"
-            data-callback="onSubmit" data-action="submit">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
     </div>
 </div>
-
-<script>
-  function onSubmit(token) {
-    document.getElementById("contact-form").submit();
-  }
-</script>
 
 {% endblock %}
 
